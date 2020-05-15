@@ -9,7 +9,10 @@ procedure Main is
    A : person := (Name => To_Unbounded_String("Bob"), Age => 54, Job_Title => To_Unbounded_String("Zoo Keeper"));
    B : person := (Name => To_Unbounded_String("Steve"), Age => 23, Job_Title => To_Unbounded_String("Plumber"));
 
-   C : Unbounded_String := To_Unbounded_String("Bob");
+   C : Unbounded_String;
+
+   Name : String(1..25);
+   Last : Integer;
 
    arrayList : person_array (0..1) :=
      (0 => A, 1 => B);
@@ -17,7 +20,8 @@ procedure Main is
 begin
 
    Put_Line("Please Enter a Name: ");
-
+   Get_Line(Name, Last);
+   C := To_Unbounded_String(Name (1..Last));
    for I of arrayList loop
       Print_Person(I);
       if I.Name = C then
